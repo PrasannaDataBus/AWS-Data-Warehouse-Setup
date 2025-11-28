@@ -20,18 +20,18 @@
 
 ***Note: You can choose either default settings or customise settings - I have chosen customise settings.
 
-2.1 - You will need to name your "namespace"
-2.2 - Admin user credentials -> Customize admin user credentials
-2.3 - You will need to enter "Admin user name"
-2.4 - Admin password -> Manually add the admin password
-2.5 - Admin user password -> Provide your password
-2.6 - Choose Associate IAM Role -> And select the role "RedshiftAccessRole" -> Choose to add it
-2.7 - Workgroup -> Enter Workgroup name -> Choose Base capacity
-2.8 - Network and security -> Choose your Virtual provate cloud (VPC) from the drop down
-2.9 - Network and security -> VPC security groups -> Choose your security group from the drop down (I have chosen "Enable access to redshift"
-2.10 - Network and security -> Subnet -> Choose your Subnet from the dropdown (I have chosen Private Subnet 1, Private Subnet 2, Private Subnet 3)
-2.11 - Save configuration
-2.12 - Wait for the status to complete 100% and then click continue
+- 2.1 - You will need to name your "namespace"
+- 2.2 - Admin user credentials -> Customize admin user credentials
+- 2.3 - You will need to enter "Admin user name"
+- 2.4 - Admin password -> Manually add the admin password
+- 2.5 - Admin user password -> Provide your password
+- 2.6 - Choose Associate IAM Role -> And select the role "RedshiftAccessRole" -> Choose to add it
+- 2.7 - Workgroup -> Enter Workgroup name -> Choose Base capacity
+- 2.8 - Network and security -> Choose your Virtual provate cloud (VPC) from the drop down
+- 2.9 - Network and security -> VPC security groups -> Choose your security group from the drop down (I have chosen "Enable access to redshift"
+- 2.10 - Network and security -> Subnet -> Choose your Subnet from the dropdown (I have chosen Private Subnet 1, Private Subnet 2, Private Subnet 3)
+- 2.11 - Save configuration
+- 2.12 - Wait for the status to complete 100% and then click continue
 
 ### Step 3: Workgroup configuration
 
@@ -50,7 +50,7 @@ A schema is a namespace that contains named database objects such as tables, vie
 
 ### Step 1: Open your command host terminal
 
-1.1 - 
+- 1.1 - 
 
 bash
 `
@@ -60,7 +60,7 @@ echo $RedshiftEndpoint
 `
 *** Replace REDSHIFT_ENDPOINT with the endpoint you have copeid earlier
 
-1.2 - o connect to Redshift Serverless endpoint using psql, run the following commands on the command host terminal
+- 1.2 - o connect to Redshift Serverless endpoint using psql, run the following commands on the command host terminal
 
 bash
 `
@@ -68,7 +68,7 @@ echo $RedshiftDB
 psql -U dbadmin -h $RedshiftEndpoint -d $RedshiftDB -p 5439
 `
 
-1.3 - To create a new schema named US_SALES, run the following query using the psql prompt:
+- 1.3 - To create a new schema named US_SALES, run the following query using the psql prompt:
 
 bash
 
@@ -76,7 +76,7 @@ bash
 create schema if not exists eu_sales;
 `
 
-1.4 - To view the list of schemas in dev database, run the following query:
+- 1.4 - To view the list of schemas in dev database, run the following query:
 
 bash
 
@@ -96,7 +96,7 @@ You can also specify any column information when you create the table.
 
 You can also create a table using the schema_name.object_name notation to create the table in the specified schema.
 
-3.1 - To create a table in us_sales schema, run the following query:
+- 3.1 - To create a table in us_sales schema, run the following query:
 
 bash
 
@@ -106,7 +106,8 @@ CREATE TABLE us_sales.supplier (
   City varchar (255)
 );
 `
-3.2 - To insert data into a table, run the following query:
+
+- 3.2 - To insert data into a table, run the following query:
 
 bash
 
@@ -114,7 +115,7 @@ bash
 INSERT INTO us_sales.supplier VALUES (781, 'San Jose'), (990, 'Palo Alto');
 `
 
-3.3 - To view the data inserted into a table, run the following query:
+- 3.3 - To view the data inserted into a table, run the following query:
 
 bash
 
@@ -132,7 +133,7 @@ SELECT * from us_sales.supplier;
 
 The COPY command uses the Amazon Redshift massively parallel processing (MPP) architecture to read and load data in parallel from files in Amazon S3, from an Amazon DynamoDB table, or from text output from one or more remote hosts.
 
- Note: The COPY command appends the new input data to any existing rows in the table. The maximum size of a single input row from any source is 4 MB.
+*** Note: The COPY command appends the new input data to any existing rows in the table. The maximum size of a single input row from any source is 4 MB.
 
  bash
 
@@ -149,7 +150,7 @@ region 'REGION' csv;
 
 <img width="725" height="66" alt="{E8CD59DB-9518-43F8-800F-B547C9088197}" src="https://github.com/user-attachments/assets/033c2100-a38c-48fc-8757-9456ec4e43c4" />
 
-4.1 - To query the supplier table, run the following query:
+- 4.1 - To query the supplier table, run the following query:
 
 bash
 
@@ -176,7 +177,7 @@ In this task, you load the Ticket dataset from Amazon S3 to Redshift Serverless 
 
 *** Image description: The preceding diagram depicts the Entity Relationship diagram for TICKETING database which consists of seven tables: two fact tables and five dimensions.
 
-5.1 - CREATE TABLES
+- 5.1 - CREATE TABLES
 
 ### Table 1: users
 
@@ -293,7 +294,7 @@ create table us_sales.sales(
 	saletime timestamp);
 `
 
-5.2 - Load data set from Amazon S3 by using the COPY command
+- 5.2 - Load data set from Amazon S3 by using the COPY command
 
 ### Load 1: users
 
@@ -395,7 +396,7 @@ copy us_sales.sales from 'S3BUCKETPATH/sales_tab.txt' iam_role 'INSERT_REDSHIFT_
 
 *** Load has been completed
 
-5.3 - Analysis
+- 5.3 - Analysis
 
 To know what are the top five venues that most events happened on a given calendar date to choose the best venue for their next concert.
 

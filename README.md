@@ -420,17 +420,9 @@ LIMIT 5;
 
 <img width="610" height="333" alt="{05373009-B4C5-40FD-AECE-06C9DA30DDB9}" src="https://github.com/user-attachments/assets/c81c461d-d981-49c9-b31d-5bf2f5031225" />
 
+<br><br>
 
-
-
-
-
-
-
-
-
-
-🛡️ Copyright & Compliance Notice
+### 🛡️ Copyright & Compliance Notice
 
 © 2026 PrasannaDataBus. All rights reserved. This repository and its contents are intended solely for self learning and portfolio demonstration purposes.
 

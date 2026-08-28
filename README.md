@@ -421,6 +421,24 @@ LIMIT 5;
 <img width="610" height="333" alt="{05373009-B4C5-40FD-AECE-06C9DA30DDB9}" src="https://github.com/user-attachments/assets/c81c461d-d981-49c9-b31d-5bf2f5031225" />
 <br><br>
 
+## Best Practice Guidelines for Amazon Redshift Serverless
+
+Whenever you design, deploy, and manage a serverless data warehouse on Amazon Redshift:
+
+* Security & Network Isolation: Always deploy Redshift Serverless workgroups inside isolated private VPC subnets. Keep public accessibility disabled and restrict inbound traffic using custom VPC Security Groups.
+
+* IAM Authentication over Static Credentials: Always assign an IAM role with S3 read permissions to the Redshift namespace for COPY operations. Never pass static AWS access keys (AKIA...) or root credentials inside COPY scripts or SQL queries.
+
+* Schema Isolation: Avoid loading production or case study tables directly into the default public schema. Create dedicated domain schemas (e.g., us_sales, analytics_gold) to enforce clean object namespaces and fine-grained user permissions.
+
+* Explicit Performance Tuning (DISTKEY / SORTKEY): Explicitly define distribution keys (DISTKEY) on primary join attributes and sort keys (SORTKEY) on high-frequency filter attributes (such as dates) rather than relying on default AUTO settings for large production tables.
+
+* High-Throughput Ingestion via MPP: Always use the parallel COPY command for batch data ingestion from Amazon S3 instead of multi-row SQL INSERT statements. Split raw S3 files into multiple compressed files to allow Redshift's Massively Parallel Processing (MPP) engine to load data across multiple slices simultaneously.
+
+* Least-Privilege Database Access: Restrict the superuser/admin account (dbadmin) strictly to infrastructure setup. Create read-only database roles for BI tools and analysts, granting explicit USAGE on specific schemas and SELECT on required tables.
+
+* Cost & Compute Controls: Configure Base RPU (Redshift Processing Units) capacity limits and set maximum query execution timeouts in the Redshift Serverless Workgroup settings to prevent runaway queries and maintain predictable cloud compute costs.
+
 ## 🛡️ Copyright & Compliance Notice
 
 © 2026 PrasannaDataBus. All rights reserved. This repository and its contents are intended solely for self learning and portfolio demonstration purposes.

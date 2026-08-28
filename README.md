@@ -420,11 +420,13 @@ LIMIT 5;
 
 <img width="610" height="333" alt="{05373009-B4C5-40FD-AECE-06C9DA30DDB9}" src="https://github.com/user-attachments/assets/c81c461d-d981-49c9-b31d-5bf2f5031225" />
 
+🛡️ Copyright & Compliance Notice
 
+© 2026 PrasannaDataBus. All rights reserved. This repository and its contents are intended solely for self learning and portfolio demonstration purposes.
 
+All screenshots, configuration snippets, and architecture diagrams related to Amazon Web Services (AWS) are used under fair use for illustrative and informational purposes only. AWS, the AWS logo, AWS Services and all related marks are trademarks of Amazon Web Services, Inc. or its affiliates.
 
-
-
+No proprietary AWS data, credentials, or customer information are included. Do not reuse or redistribute any part of this repository without explicit permission from the author.
 
 
 
